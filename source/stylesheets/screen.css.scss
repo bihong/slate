@@ -76,6 +76,8 @@ html, body {
     display: block;
     max-width: 100%;
     margin-bottom: $logo-margin;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &>.search {
@@ -452,6 +454,7 @@ html, body {
     background-color: rgba(0,0,0,0.05);
     padding: 3px;
     border-radius: 3px;
+    white-space: pre-wrap;
     @extend %break-words;
     @extend %code-font;
   }
