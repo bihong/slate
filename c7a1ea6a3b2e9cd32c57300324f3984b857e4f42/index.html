@@ -219,13 +219,19 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#chope-partner-api-version-2" class="toc-h1 toc-link" data-title="Chope Partner API version 2">Chope Partner API version 2</a>
+            <a href="#chope-partner-bookings-api" class="toc-h1 toc-link" data-title="Chope Partner Bookings API">Chope Partner Bookings API</a>
           </li>
           <li>
             <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+          </li>
+          <li>
+            <a href="#chope-api-endpoint" class="toc-h1 toc-link" data-title="Chope API endpoint">Chope API endpoint</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#chope-api-endpoint" class="toc-h2 toc-link" data-title="Chope API endpoint">Chope API endpoint</a>
+                    <a href="#production" class="toc-h2 toc-link" data-title="Production">Production</a>
+                  </li>
+                  <li>
+                    <a href="#sandbox" class="toc-h2 toc-link" data-title="Sandbox">Sandbox</a>
                   </li>
               </ul>
           </li>
@@ -233,7 +239,15 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#prerequisite" class="toc-h1 toc-link" data-title="Prerequisite">Prerequisite</a>
+            <a href="#important-notes" class="toc-h1 toc-link" data-title="Important Notes">Important Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#restaurant-with-special-setup" class="toc-h2 toc-link" data-title="Restaurant with Special Setup">Restaurant with Special Setup</a>
+                  </li>
+                  <li>
+                    <a href="#email-communication-with-users" class="toc-h2 toc-link" data-title="Email Communication with Users">Email Communication with Users</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#flow" class="toc-h1 toc-link" data-title="Flow">Flow</a>
@@ -317,22 +331,22 @@
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-          </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='chope-partner-api-version-2'>Chope Partner API version 2</h1>
-<p>version 1: January 26th, 2018</p>
+        <h1 id='chope-partner-bookings-api'>Chope Partner Bookings API</h1>
+<p>Version 1: 1st published at January 26th, 2018</p>
 
-<p>version 2: Updated on December 6th, 2018</p>
+<p>Update 2: December 6th, 2018</p>
+
+<p>Update 3: December 17th, 2018</p>
+
+<p>Update 4: March 5th, 2018  </p>
 <h1 id='overview'>Overview</h1>
 <p>Welcome to the Chope Partner Booking API! This is a quick starting guide to allow Chope partners and affiliates to utilize and implement Chope Booking API to create customize and native online booking widget for users.</p>
 
@@ -388,10 +402,14 @@
 <td>zh_CN</td>
 </tr>
 </tbody></table>
-<h2 id='chope-api-endpoint'>Chope API endpoint</h2>
-<p><code>https://chopeapi.chope.co/</code> (Production)</p>
+<h1 id='chope-api-endpoint'>Chope API endpoint</h1><h2 id='production'>Production</h2>
+<p><code>https://chopeapi.chope.co/</code> (outside China)</p>
 
-<p><code>http://chopeapi.chope.info/</code> or something else shared by Chope team (Sandbox)</p>
+<p><code>https://chopeapi.chope.net.cn/</code> (inside China excluding HongKong)</p>
+<h2 id='sandbox'>Sandbox</h2>
+<p><code>http://chopeapi.chope.info/</code> (outside China)</p>
+
+<p><code>https://chopeapi.chope.cc/</code> (inside China excluding HongKong)</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code: </p>
@@ -404,12 +422,12 @@ curl <span class="s1">'api_enpoint_here'</span>
 <p>Make sure to replace <code>6987ca1086f4e31474bc4a0bf291d4e2b7926c52</code> with your API key to access the production data.</p>
 </blockquote>
 
-<p>Chope API uses token-based verification in the header in a query. An access token will be assigned by Chope to our partners once commercial term has been signed. </p>
+<p>Chope API uses token-based verification in the header. An access token will be assigned by Chope to partners once commercial term has been signed. </p>
 
 <p>To perform test on Chope Sandbox environment, please use the following token: </p>
 
 <p><code>Autorization: Bearer 6987ca1086f4e31474bc4a0bf291d4e2b7926c52</code></p>
-<h1 id='prerequisite'>Prerequisite</h1>
+<h1 id='important-notes'>Important Notes</h1><h2 id='restaurant-with-special-setup'>Restaurant with Special Setup</h2>
 <p>Most reservation on Chope can be made simply by submitting diner&#39;s particulars, but some restaurants have special configurations that require additional information and process, for example: </p>
 
 <ol>
@@ -420,6 +438,8 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 </ol>
 
 <p>Please take extra notice when implementing the <code>bookings/create</code> API to cover all scenarios to prevent failed reservation.</p>
+<h2 id='email-communication-with-users'>Email Communication with Users</h2>
+<p>Chope will send out booking confrimation and reminder email to users. If partner wish to perform the communication with users directly, please indicate your intention in the commercial term. Chope team will disable the email feature during partner setup process. </p>
 <h1 id='flow'>Flow</h1><h2 id='customer-facing-flow'>Customer Facing Flow</h2>
 <p><img src="images/customer_facing_flow.png" alt="customer_facing_flow" /></p>
 
@@ -766,7 +786,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://chopeapi.chope.info/bookings/timeslots?restaurant_id=sandboxreztype1&amp;date_time=1545980400&amp;adults=5&amp;children=1&amp;language=en_US&amp;region_code=SG'</span>
 -X GET  
 -H <span class="s1">'Authorization: Bearer YOUR-TOKEN-CODE'</span>
-</code></pre><h3 id='query-parameters-2'>Query Parameters</h3>
+</code></pre><h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -893,7 +913,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
         </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia/Singapore"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-parameters-2'>Response Parameters</h3>
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -924,7 +944,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <tr>
 <td>&nbsp;&nbsp; capacity_limit</td>
 <td>string</td>
-<td>Indicated the capacity fir this time slot if available.</td>
+<td>Indicated the capacity for this time slot if available.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp; note</td>
@@ -998,17 +1018,22 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 </tr>
 </tbody></table>
 <h3 id='type-of-questionnaire-input_type'>Type of <code>questionnaire.input_type</code></h3>
-<p>checkbox: 1 line of statement, usually requires user to check the box for acknowledgement. You must display a checkbox in front of the <code>question_text</code>. The answer should be represented in <code>answer_keyword</code> as &quot;checked&quot; or &quot;null&quot; for unchecked response.</p>
+<p><img src="images/sample_cq.png" alt="Sample_cq" /></p>
 
-<p>select: Questionnaire with multiple selections that user must choose 1 answer. You must offer the <code>answer_keyword</code> as multiple choices to the user. The selected choice should be pass as the answer.</p>
+<p><strong>checkbox</strong>: 1 line of statement, usually requires user to check the box for acknowledgement. You must display a checkbox in front of the <code>question_text</code>. The answer should be represented in <code>answer_keyword</code> as &quot;checked&quot; or &quot;null&quot; for unchecked response. 
+Refer to (1) in the image where the restaurant is asking if the diner needs a baby assistance, in this case, <code>question_text</code> return the text &quot;Do you need any baby. assistance?&quot;.</p>
 
-<p>number: It stars with a statement &quot;I need {number} <code>answer_keyword</code>&quot;. The {number} is a field for the user to input an integer to indicate the volume of <code>answer_keyword</code> that he needs for the reservation. Please pass the whole string &quot;I need {number} <code>answer_keyword</code>&quot; as the answer.</p>
+<p><strong>select</strong>: Questionnaire with multiple selections that user must choose 1 answer. You must offer the <code>answer_keyword</code> as multiple choices to the user. The selected choice should be pass as the answer.
+Refer to (2) in the image where the restaurant is asking what type of baby assistance diner needs, in this case, <code>question_text</code> return the text &quot;What type?&quot;, <code>answer_keyword</code> return the available selection as array [&quot;Highchair&quot; , &quot;Booster&quot;].</p>
+
+<p><strong>number</strong>: It stars with a statement &quot;I need {number} <code>answer_keyword</code>&quot;. The {number} is a field for the user to input an integer to indicate the volume of <code>answer_keyword</code> that he needs for the reservation. Please pass the whole string &quot;I need {number} <code>answer_keyword</code>&quot; as the answer.
+Refer to (3) in the image where the restaurant is asking how many napkins diner needs, in this case, <code>answer_keyword</code> return the text &quot;napkin(s)&quot;. </p>
 <h2 id='post-bookings-create'>POST /bookings/create</h2>
 <p>Use this endpoint to create a new reservation. </p>
 
 <ul>
 <li>The endpoint returns booking reservation ID (unique) and booking confirmation code for a successful reservation. </li>
-<li>If <code>callback_url</code> is present. Booking information and status will be postback to partner when the booking is modified by others.</li>
+<li>If <code>callback_url</code> is present, booking information and status will be postback to partner when the booking is modified by others.</li>
 </ul>
 
 <blockquote>
@@ -1018,7 +1043,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <span class="s1">'http://chopeapi.chope.info/bookings/create?restaurant_id=sandboxreztype1&amp;language=en_US&amp;date_time=1546002900&amp;title=MR.&amp;first_name=XXX&amp;last_name=YYY&amp;phone_cc=65&amp;mobile=12345678&amp;email=xxx@gmail.com&amp;adults=6&amp;children=1&amp;notes=Birthday celebration&amp;content={"653":"I need 10 napkins","654":"checked","655":"Highchair"}&amp;membership_id=9309&amp;callback_url=http://test.chope.co/&amp;agree_receive_email=1'</span> 
 -X POST 
 -H <span class="s1">'Authorization: Bearer YOUR-TOKEN-CODE'</span> 
-</code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+</code></pre><h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1140,7 +1165,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='response-parameters-3'>Response Parameters</h3>
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1182,7 +1207,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='restaurant-with-deposit-requirement'>Restaurant with Deposit Requirement</h3>
 <p>For a restaurant with deposit required, you would receive a separate set of response with URL link to the payment widget in order for the user to process their payment, the seat will be held for 10 minutes until the payment is made. </p>
-<h3 id='response-parameters-4'>Response Parameters</h3>
+<h3 id='response-parameters-2'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1221,7 +1246,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <span class="s1">'http://chopeapi.chope.info/bookings/edit?restaurant_id=sandboxreztype1&amp;language=en_US&amp;region_code=SG&amp;date_time=1546001100&amp;title=MR.&amp;first_name=XXX&amp;last_name=YYY&amp;phone_cc=65&amp;mobile=12345678&amp;email=xxx@gmail.com&amp;adults=5&amp;children=1&amp;notes="It'</span>s my birthday&amp;content<span class="s2">"={"</span>199<span class="s2">":"</span>tea<span class="s2">"}&amp;membership_id=9308&amp;reservation_id=7384847&amp;callback_url=http://leon.chope.co/' 
 -X POST 
 -H 'Authorization: Bearer TOKEN-CODE' 
-</span></code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
+</span></code></pre><h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1348,7 +1373,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EDITED"</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-parameters-5'>Response Parameters</h3>
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1408,7 +1433,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <span class="s1">'http://chopeapi.chope.info/bookings/cancel?reservation_id=7384847&amp;restaurant_id=sandboxreztype1&amp;membership_id=9308'</span> 
 -X POST 
 -H <span class="s1">'Authorization: Bearer YOUR-TOKEN-CODE'</span> 
-</code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
+</code></pre><h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1451,7 +1476,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELLED"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-parameters-6'>Response Parameters</h3>
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1492,11 +1517,34 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://chopeapi.chope.info/bookings/load?reservation_id=7384847&amp;restaurant_id=sandboxreztype1&amp;membership_id=9308'</span>  
 -X GET 
 -H <span class="s1">'Authorization: Bearer TOKEN-CODE'</span>
-</code></pre><h3 id='query-parameters-6'>Query Parameters</h3>
-<p>Parameter | Type | Required | Description
-reservation_id | integer | yes | Unique Chope booking identifier.
-restaurant_id | string | yes | Unique Chope restaurant identifier. 
-membership_id | string | yes | Partner’s unique user ID.</p>
+</code></pre><h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reservation_id</td>
+<td>integer</td>
+<td>yes</td>
+<td>Unique Chope booking identifier.</td>
+</tr>
+<tr>
+<td>restaurant_id</td>
+<td>string</td>
+<td>yes</td>
+<td>Unique Chope restaurant identifier.</td>
+</tr>
+<tr>
+<td>membership_id</td>
+<td>string</td>
+<td>yes</td>
+<td>Partner’s unique user ID.</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Sample Response (formatted)</p>
@@ -1527,7 +1575,7 @@ membership_id | string | yes | Partner’s unique user ID.</p>
         </span><span class="s2">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-parameters-7'>Response Parameters</h3>
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1614,6 +1662,11 @@ membership_id | string | yes | Partner’s unique user ID.</p>
 <td>restaurant_id</td>
 <td>string</td>
 <td>Unique Chope restaurant identifier.</td>
+</tr>
+<tr>
+<td>questionnaire</td>
+<td>string</td>
+<td>Depreciated.</td>
 </tr>
 </tbody></table>
 
@@ -1728,7 +1781,7 @@ membership_id | string | yes | Partner’s unique user ID.</p>
 <td>limit</td>
 <td>integer</td>
 <td>no</td>
-<td>The maximum number of results to return. If this parameter is not specified the API will return all results per call.</td>
+<td>The maximum number of results to return. Default to 100 if empty.</td>
 </tr>
 </tbody></table>
 
@@ -1772,7 +1825,7 @@ membership_id | string | yes | Partner’s unique user ID.</p>
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-parameters-8'>Response Parameters</h3>
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1860,7 +1913,7 @@ membership_id | string | yes | Partner’s unique user ID.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://chopeapi.chope.info/restaurant?restaurant_id=sandboxreztype1'</span>  
 -X GET 
 -H <span class="s1">'Authorization: Bearer TOKEN-CODE'</span>
-</code></pre><h3 id='query-parameter-2'>Query Parameter</h3>
+</code></pre><h3 id='query-parameter'>Query Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1898,7 +1951,7 @@ membership_id | string | yes | Partner’s unique user ID.</p>
         </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+65 12356789"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-parameters-9'>Response Parameters</h3>
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2044,15 +2097,26 @@ membership_id | string | yes | Partner’s unique user ID.</p>
 <td>TH</td>
 <td>Thailand</td>
 </tr>
+<tr>
+<td>HK</td>
+<td>Hong Kong</td>
+</tr>
+<tr>
+<td>ZH</td>
+<td>China</td>
+</tr>
 </tbody></table>
 
-<p>Please replace the placeholder <code>{country}</code> in the file path into respective folder name listed in the table.</p>
+<p>Please replace the placeholder <code>{country}</code> in the file path into respective folder name listed in the table.
+Please replace the <code>/chope/</code> folder to <code>/chopetest/</code> to access the feed data for sandbox environment.
+For the full filepath, please reach out to your Chope&#39;s contact.</p>
 <h2 id='restaurant-information-feed'>Restaurant Information Feed</h2>
 <p>This feed provides Chope&#39;s restaurant basic data.</p>
 <h3 id='base-file'>Base file</h3>
-<p>File path: <code>/chope/partners_dining/{country}_restaurant_information_feed_base.json</code></p>
+<p>File path: <code>/chope/partners_dining/{country}/{country}_restaurant_information_feed_base.json</code></p>
 
-<p>This json file acts as a sitemap with the file path of the all availability feed file stored under this directory.</p>
+<p>This json file acts as a sitemap with the file path of the all information feed file stored under this directory.
+Restaurant information feed file is updated on a daily basis.</p>
 
 <blockquote>
 <p>Sample Feed</p>
@@ -2088,8 +2152,11 @@ membership_id | string | yes | Partner’s unique user ID.</p>
 <td>Last modification dates of the feed file.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">Partner can monitor the "lastmod" value in the base file and trigger an update process when the timestamp changes.
+</aside>
 <h3 id='restaurant-information-file'>Restaurant Information File</h3>
-<p>File path: <code>/chope/partners_dining/{country}_restaurant_information_feed_{offset}_500.json</code></p>
+<p>File path: <code>/chope/partners_dining/{country}/{country}_restaurant_information_feed_{offset}_500.json</code></p>
 
 <p>Each feed file holds information for 500 restaurants.</p>
 
@@ -2195,10 +2262,11 @@ membership_id | string | yes | Partner’s unique user ID.</p>
 </tbody></table>
 <h2 id='restaurant-table-availability-feed'>Restaurant Table Availability Feed</h2>
 <p>This feed provides availability of the restaurant for the next 30 days.</p>
-<h3 id='base-file-2'>Base file</h3>
-<p>File path: <code>/chope/partners_dining/{country}_restaurant_table_availability_feed_base.json</code></p>
+<h3 id='base-file'>Base file</h3>
+<p>File path: <code>/chope/partners_dining/{country}/{country}_restaurant_table_availability_feed_base.json</code></p>
 
-<p>This json file acts as a sitemap with the file path of the all availability feed file stored under this directory.</p>
+<p>This json file acts as a sitemap with the file path of the all availability feed file stored under this directory.
+Availability feed file is updated every 5 hours.</p>
 
 <blockquote>
 <p>Sample Feed</p>
@@ -2232,8 +2300,11 @@ membership_id | string | yes | Partner’s unique user ID.</p>
 <td>Last modification dates of the feed file.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">Partner can monitor the "lastmod" value in the base file and trigger an update process when the timestamp changes.
+</aside>
 <h3 id='availability-file'>Availability File</h3>
-<p>File path: <code>/chope/partners_dining/{country}_restaurant_table_availability_feed_{offset}_50.json</code></p>
+<p>File path: <code>/chope/partners_dining/{country}/{country}_restaurant_table_availability_feed_{offset}_50.json</code></p>
 
 <p>Each feed file holds availability of 50 restaurant for the next 30 days. </p>
 
@@ -2372,64 +2443,6 @@ This is a RESTful POST method in JSON format (&#39;Content-Type: application/jso
 <p>The data format is similar with the table availability feed.</p>
 
 <p>We suggest partners to add a “sign” parameter in the API for access control purposes.</p>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
 
       </div>
       <div class="dark-box">
