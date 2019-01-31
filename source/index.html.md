@@ -28,11 +28,15 @@ includes:
 search: true
 ---
 
-# Chope Partner API version 2
+# Chope Partner Bookings API 
 
-version 1: January 26th, 2018
+Version 1: 1st published at January 26th, 2018
 
-version 2: Updated on December 6th, 2018
+Update 2: December 6th, 2018
+
+Update 3: December 17th, 2018
+
+Update 4: March 5th, 2018  
 
 # Overview
 
@@ -55,9 +59,15 @@ Beijing | BEIJING | zh_CN
 
 # Chope API endpoint
 
-`https://chopeapi.chope.co/` (Production)
+##Production
+`https://chopeapi.chope.co/` (outside China)
 
-`http://chopeapi.chope.info/` or something else shared by Chope team (Sandbox)
+`https://chopeapi.chope.net.cn/` (inside China excluding HongKong)
+
+##Sandbox
+`http://chopeapi.chope.info/` (outside China)
+
+`https://chopeapi.chope.cc/` (inside China excluding HongKong)
 
 # Authentication
 
@@ -71,15 +81,16 @@ curl 'api_enpoint_here'
 
 > Make sure to replace `6987ca1086f4e31474bc4a0bf291d4e2b7926c52` with your API key to access the production data.
 
-Chope API uses token-based verification in the header in a query. An access token will be assigned by Chope to our partners once commercial term has been signed. 
+Chope API uses token-based verification in the header. An access token will be assigned by Chope to partners once commercial term has been signed. 
 
 To perform test on Chope Sandbox environment, please use the following token: 
 
 `Autorization: Bearer 6987ca1086f4e31474bc4a0bf291d4e2b7926c52`
 
 
-# Prerequisite
+# Important Notes
 
+## Restaurant with Special Setup
 Most reservation on Chope can be made simply by submitting diner's particulars, but some restaurants have special configurations that require additional information and process, for example: 
 
 1. Restaurant with Customized Questionnaire (CQ)  
@@ -89,6 +100,10 @@ Most reservation on Chope can be made simply by submitting diner's particulars, 
   Some restaurants have up-front deposit payment required to prevent no-show.
 
 Please take extra notice when implementing the `bookings/create` API to cover all scenarios to prevent failed reservation.
+
+## Email Communication with Users
+Chope will send out booking confrimation and reminder email to users. If partner wish to perform the communication with users directly, please indicate your intention in the commercial term. Chope team will disable the email feature during partner setup process. 
+
 
 # Flow
 ## Customer Facing Flow

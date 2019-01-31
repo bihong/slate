@@ -118,7 +118,7 @@ status | string | Availability status. <br> OPEN: available for booking. <br> CL
 timeslots || 
 &nbsp;&nbsp; time | timestamp | Time slot available on specific date for booking in UNIX time
 &nbsp;&nbsp; wailtlist | boolean | Waitlist availability.
-&nbsp;&nbsp; capacity_limit | string | Indicated the capacity fir this time slot if available.
+&nbsp;&nbsp; capacity_limit | string | Indicated the capacity for this time slot if available.
 &nbsp;&nbsp; note | string | Specific note for this time slot. 
 selected_values ||
 &nbsp;&nbsp;selected_adults | integer | Selected adult party size or default value = 2
@@ -136,9 +136,17 @@ questionnaire ||
 
 
 ### Type of `questionnaire.input_type`
+![Sample_cq](sample_cq.png)
 
-checkbox: 1 line of statement, usually requires user to check the box for acknowledgement. You must display a checkbox in front of the `question_text`. The answer should be represented in `answer_keyword` as "checked" or "null" for unchecked response.
+**checkbox**: 1 line of statement, usually requires user to check the box for acknowledgement. You must display a checkbox in front of the `question_text`. The answer should be represented in `answer_keyword` as "checked" or "null" for unchecked response. 
+Refer to (1) in the image where the restaurant is asking if the diner needs a baby assistance, in this case, `question_text` return the text "Do you need any baby. assistance?".
 
-select: Questionnaire with multiple selections that user must choose 1 answer. You must offer the `answer_keyword` as multiple choices to the user. The selected choice should be pass as the answer.
+**select**: Questionnaire with multiple selections that user must choose 1 answer. You must offer the `answer_keyword` as multiple choices to the user. The selected choice should be pass as the answer.
+Refer to (2) in the image where the restaurant is asking what type of baby assistance diner needs, in this case, `question_text` return the text "What type?", `answer_keyword` return the available selection as array ["Highchair" , "Booster"].
 
-number: It stars with a statement "I need {number} `answer_keyword`". The {number} is a field for the user to input an integer to indicate the volume of `answer_keyword` that he needs for the reservation. Please pass the whole string "I need {number} `answer_keyword`" as the answer.
+**number**: It stars with a statement "I need {number} `answer_keyword`". The {number} is a field for the user to input an integer to indicate the volume of `answer_keyword` that he needs for the reservation. Please pass the whole string "I need {number} `answer_keyword`" as the answer.
+Refer to (3) in the image where the restaurant is asking how many napkins diner needs, in this case, `answer_keyword` return the text "napkin(s)". 
+
+
+
+

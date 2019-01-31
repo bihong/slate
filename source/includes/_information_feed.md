@@ -6,7 +6,8 @@ This feed provides Chope's restaurant basic data.
 
 File path: `/chope/partners_dining/{country}/{country}_restaurant_information_feed_base.json`
 
-This json file acts as a sitemap with the file path of the all availability feed file stored under this directory.
+This json file acts as a sitemap with the file path of the all information feed file stored under this directory.
+Restaurant information feed file is updated on a daily basis.
 
 > Sample Feed
 
@@ -32,6 +33,9 @@ Parameter | Description
 --------- | -----------
 loc | File path of the feed file.
 lastmod | Last modification dates of the feed file. 
+
+<aside class="notice">Partner can monitor the "lastmod" value in the base file and trigger an update process when the timestamp changes.
+</aside>
 
 
 ### Restaurant Information File

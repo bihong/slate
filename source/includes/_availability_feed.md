@@ -7,6 +7,7 @@ This feed provides availability of the restaurant for the next 30 days.
 File path: `/chope/partners_dining/{country}/{country}_restaurant_table_availability_feed_base.json`
 
 This json file acts as a sitemap with the file path of the all availability feed file stored under this directory.
+Availability feed file is updated every 5 hours.
 
 > Sample Feed
 
@@ -30,6 +31,9 @@ Parameter | Description
 --------- | -----------
 loc | File path of the feed file.
 lastmod | Last modification dates of the feed file. 
+
+<aside class="notice">Partner can monitor the "lastmod" value in the base file and trigger an update process when the timestamp changes.
+</aside>
 
 ### Availability File
 

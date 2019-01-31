@@ -19,6 +19,8 @@ Folder Name | Country
 SG | Singapore
 ID | Indonesia
 TH | Thailand
+HK | Hong Kong
+ZH | China
 
 Please replace the placeholder `{country}` in the file path into respective folder name listed in the table.
 Please replace the `/chope/` folder to `/chopetest/` to access the feed data for sandbox environment.

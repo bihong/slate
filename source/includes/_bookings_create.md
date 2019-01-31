@@ -3,7 +3,7 @@
 Use this endpoint to create a new reservation. 
 
 - The endpoint returns booking reservation ID (unique) and booking confirmation code for a successful reservation. 
-- If `callback_url` is present. Booking information and status will be postback to partner when the booking is modified by others.
+- If `callback_url` is present, booking information and status will be postback to partner when the booking is modified by others.
 
 > Sample Request
 

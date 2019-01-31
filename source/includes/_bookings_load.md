@@ -15,6 +15,7 @@ curl 'http://chopeapi.chope.info/bookings/load?reservation_id=7384847&restaurant
 
 ### Query Parameters
 Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
 reservation_id | integer | yes | Unique Chope booking identifier.
 restaurant_id | string | yes | Unique Chope restaurant identifier. 
 membership_id | string | yes | Partner’s unique user ID.
@@ -69,6 +70,7 @@ children | integer | Number of children in the party.
 membership_id | string | Partner's unique user ID. 
 restaurant_name | string | Restaurant Name. 
 restaurant_id | string | Unique Chope restaurant identifier.
+questionnaire | string | Depreciated.
 
 <aside class="warning">While the reservation is placed real time, there is a queue process to sync up 3rd party membership data back to our master database which created a small time lag (production: less than 1 min ; sandbox: around 10 mins) before the reservation record can be retrieved through “bookings/load” API. Please notice the limitation while performing test on sandbox environment. 
 </aside>
