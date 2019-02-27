@@ -39,9 +39,7 @@ lastmod | Last modification dates of the feed file.
 
 
 ### Restaurant Information File
-File path: `/chope/partners_dining/{country}/{country}_restaurant_information_feed_{offset}_500.json`
-
-Each feed file holds information for 500 restaurants.
+File path: refer to the full file path in the base file.
 
 > Sample Feed
 

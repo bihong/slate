@@ -37,9 +37,9 @@ lastmod | Last modification dates of the feed file.
 
 ### Availability File
 
-File path: `/chope/partners_dining/{country}/{country}_restaurant_table_availability_feed_{offset}_50.json`
+File path: refer to the full file path in the base file.
 
-Each feed file holds availability of 50 restaurant for the next 30 days. 
+The feed file holds availability of restaurant for the next 30 days. 
 
 > Sample Feed
 

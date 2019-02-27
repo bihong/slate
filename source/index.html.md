@@ -44,19 +44,6 @@ Welcome to the Chope Partner Booking API! This is a quick starting guide to allo
 
 The current Chope Booking API is organized around REST and JSON is returned by all API responses. Please keep in mind the Chope Booking API may change overtime as Chope continues to open more API endpoints for external consumption.
 
-Currently Chope operate in 8 cities, please use the following `region_code` while working with each specific market. In all cities we support English as default language and the local language of each city. 
-
-Cities | region_code | language 
------- | ----------- | --------
-Singapore | SG | en_US
-Hong Kong | HK | zh_HK
-Jakarta | JAKARTA | id_ID
-Bali | BALI | id_ID
-Bangkok | BANGKOK | th_TH
-Phuket | PHUKET | th_TH
-Shanghai | SHANGHAI | zh_CN
-Beijing | BEIJING | zh_CN
-
 # Chope API endpoint
 
 ##Production
@@ -76,33 +63,60 @@ Beijing | BEIJING | zh_CN
 ```shell
 # With shell, you can just pass the correct header with each request
 curl 'api_enpoint_here' 
-  -H 'Autorization: Bearer 6987ca1086f4e31474bc4a0bf291d4e2b7926c52'
+  -H 'Autorization: Bearer 1234ca567f4e31474ef4a0bf29z4e2b890c11'
 ```
 
-> Make sure to replace `6987ca1086f4e31474bc4a0bf291d4e2b7926c52` with your API key to access the production data.
+> Make sure to replace `1234ca567f4e31474ef4a0bf29z4e2b890c11` with your API key to access the production data.
 
 Chope API uses token-based verification in the header. An access token will be assigned by Chope to partners once commercial term has been signed. 
 
-To perform test on Chope Sandbox environment, please use the following token: 
+To perform test on Chope Sandbox environment, please [reach out to us](mailto:product-team@chope.co) for arrangement. 
 
-`Autorization: Bearer 6987ca1086f4e31474bc4a0bf291d4e2b7926c52`
+# Market Availability
 
+Chope operates in 8 cities, please use the following `region_code` while working with each specific market. In all cities we support English as default language and the local language of each city. 
+
+Cities | region_code | language 
+------ | ----------- | --------
+Singapore | SG | en_US
+Hong Kong | HK | zh_HK
+Jakarta | JAKARTA | id_ID
+Bali | BALI | id_ID
+Bangkok | BANGKOK | th_TH
+Phuket | PHUKET | th_TH
+Shanghai | SHANGHAI | zh_CN
+Beijing | BEIJING | zh_CN
 
 # Important Notes
 
 ## Restaurant with Special Setup
 Most reservation on Chope can be made simply by submitting diner's particulars, but some restaurants have special configurations that require additional information and process, for example: 
 
-1. Restaurant with Customized Questionnaire (CQ)  
+1. Restaurant with custom checkboxes to obtain users' consent  
+  The content may be restaurant's terms or special notes e.g. dress code etc. 
+
+2. Restaurant with Customized Questionnaire (CQ)  
   This is question set up by the restaurant to diners, e.g. seating preference (in-door/outdoor) [optional or required] 
 
-2. Restaurant with Deposit Requirement  
+3. Restaurant with Deposit Requirement  
   Some restaurants have up-front deposit payment required to prevent no-show.
 
-Please take extra notice when implementing the `bookings/create` API to cover all scenarios to prevent failed reservation.
+Please take extra notice when implementing the booking flows and calling `bookings/create` API to cover all scenarios to prevent failed reservation.
 
 ## Email Communication with Users
-Chope will send out booking confrimation and reminder email to users. If partner wish to perform the communication with users directly, please indicate your intention in the commercial term. Chope team will disable the email feature during partner setup process. 
+By default, Chope will send out Chope branded booking confirmation and reminder email to users. We provide 2 options for partners:
+
+1. Co-branded email manage by Chope based on standard template
+
+2. Co-branded white label email manage by partners 
+
+Please indicate your choice of user communication preference in the commercial term.
+
+### Type of Emails
+1. Confirmation email upon successful booking
+2. Reminder email (within 12am-5am on the reservation day)
+3. Edited reservation 
+4. Cancelled reservation
 
 
 # Flow

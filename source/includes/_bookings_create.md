@@ -19,7 +19,7 @@ Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 restaurant_id | string | yes | Unique Chope restaurant identifier.
 date_time | timestamp | yes | Booking date and time in UNIX time. 
-title | string | no | Title of the diner. Possible value: Mr., Miss, Ms., Mrs., Dr. Can be null.
+title | string | no | Title of the diner. Possible value: `Mr.`, `Ms.`, `Mrs.`, `Mdm.`, `Dr.` Can be null. **If you support mutiple language, please map local laguage to this 5 types of title in English.**
 last_name | string | yes | Last name of the diner.
 first_name | string | no | First name of the diner. 
 adults | integer | yes | Number of adults in the party.
@@ -29,7 +29,7 @@ phone_cc | integer | yes | Country code of the diner's mobile number.
 mobile | integer | yes | Mobile contact number of the diner. 
 notes | string | no | Diner special request for the booking. Can be null.
 membership_id | string | yes | Partner's unique user ID. Chope API will return error if this value is misaligned with `membership_id` stored in Chope system for future booking update queries. 
-content | json | yes | Questionnaire answer in key-value set. <br>Sample: {"7":"Indoors","8":"bar seats"}. Required only if Questionnaire is mandatory. 
+content | json | yes | Questionnaire answer in key-value set {"`id1`":"`answer1`", "`id2`":"`answer2`"}. <br>Sample: {"7":"Indoors", "8":"bar seats"} <br>Required only if Questionnaire is mandatory. 
 callback_url | string | no | URL that Chope call to post information back to partner.
 language | string | no | This setting will impact the language used in any future communication with users including booking confirmation email or reminder email. Default to `en_US` if empty.
 agree_receive_email | integer | no | Default value is “1” where user agrees to receive promotional email from Chope. Use “0” to indicate the opposite.

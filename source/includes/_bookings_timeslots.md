@@ -29,6 +29,9 @@ children | integer | no | Number of children in the party. Default to `0` if emp
 langauage |string | no | Preferential language of the questionnaire. Default to `en_US` if empty.
 region_code | string | no | Default to `SG` if empty.
 
+<aside class="notice">Use the correct combination of <code>region_code</code> and <code>language</code> to retrieve contents in local languge. Wrong combination will return contents in en_US by default.
+</aside>
+
 > Sample Response (formatted)
 
 ```json
@@ -43,25 +46,21 @@ region_code | string | no | Default to `SG` if empty.
             {
                 "time": 1545953400,
                 "waitlist": false,
-                "capacity_limit": "2-6",
                 "note": ""
             },
             {
                 "time": 1545954300,
                 "waitlist": false,
-                "capacity_limit": "2-6",
                 "note": ""
             },
             {
                 "time": 1545955200,
                 "waitlist": false,
-                "capacity_limit": "2-6",
                 "note": ""
             },
             {
                 "time": 1545956100,
                 "waitlist": false,
-                "capacity_limit": "2-6",
                 "note": ""
             }
         ],
@@ -116,9 +115,9 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | string | Availability status. <br> OPEN: available for booking. <br> CLOSE: Full or not available to accept online booking.
 timeslots || 
-&nbsp;&nbsp; time | timestamp | Time slot available on specific date for booking in UNIX time
+&nbsp;&nbsp; time | timestamp | Time slot available on specific date for booking in UNIX time.
 &nbsp;&nbsp; wailtlist | boolean | Waitlist availability.
-&nbsp;&nbsp; capacity_limit | string | Indicated the capacity for this time slot if available.
+&nbsp;&nbsp; ~~capacity_limit~~ | ~~string~~ | ~~Indicated the capacity for this time slot if available.~~ **Depreciated**
 &nbsp;&nbsp; note | string | Specific note for this time slot. 
 selected_values ||
 &nbsp;&nbsp;selected_adults | integer | Selected adult party size or default value = 2

@@ -20,6 +20,10 @@ reservation_id | integer | yes | Unique Chope booking identifier.
 restaurant_id | string | yes | Unique Chope restaurant identifier. 
 membership_id | string | yes | Partner’s unique user ID.
 
+<aside class="notice">
+Although <code>membership_id</code> is in the string type, remember to encode for special character when making the request
+</aside>
+
 > Sample Response (formatted)
 
 ```json

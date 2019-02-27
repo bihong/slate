@@ -34,6 +34,9 @@ adults | integer | no | Default to 2 if empty.
 children | integer | no | Default to 0 if empty.
 language | string | no | Default to `en_US` if empty.
 
+<aside class="notice">Use the correct combination of <code>region_code</code> and <code>language</code> to retrieve contents in local languge. Wrong combination will return contents in en_US by default.
+</aside>
+
 > Sample Response (formatted)
 
 ```json
@@ -136,3 +139,6 @@ date_list | timestamp | Date on the calendar in UNIX time.
 &nbsp;&nbsp; note | string | Restaurant note of the date, usually shows available sessions for online reservation.
 &nbsp;&nbsp; event_note |string | Restaurant with special event note eg. Live-band available.
 &nbsp;&nbsp; waitlist | boolean | Waitlist availability. <br>0: not available <br>1: available
+
+<aside class="warning">You MUST implement <code>custome_checkboxes</code> with <code>required</code> value equal true - as this is extremely important for restuarant with certain terms and privacy policy that users must consent in order to make an online reservation.
+</aside>
