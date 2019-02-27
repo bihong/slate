@@ -239,6 +239,9 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#market-availability" class="toc-h1 toc-link" data-title="Market Availability">Market Availability</a>
+          </li>
+          <li>
             <a href="#important-notes" class="toc-h1 toc-link" data-title="Important Notes">Important Notes</a>
               <ul class="toc-list-h2">
                   <li>
@@ -351,8 +354,31 @@
 <p>Welcome to the Chope Partner Booking API! This is a quick starting guide to allow Chope partners and affiliates to utilize and implement Chope Booking API to create customize and native online booking widget for users.</p>
 
 <p>The current Chope Booking API is organized around REST and JSON is returned by all API responses. Please keep in mind the Chope Booking API may change overtime as Chope continues to open more API endpoints for external consumption.</p>
+<h1 id='chope-api-endpoint'>Chope API endpoint</h1><h2 id='production'>Production</h2>
+<p><code>https://chopeapi.chope.co/</code> (outside China)</p>
 
-<p>Currently Chope operate in 8 cities, please use the following <code>region_code</code> while working with each specific market. In all cities we support English as default language and the local language of each city. </p>
+<p><code>https://chopeapi.chope.net.cn/</code> (inside China excluding HongKong)</p>
+<h2 id='sandbox'>Sandbox</h2>
+<p><code>http://chopeapi.chope.info/</code> (outside China)</p>
+
+<p><code>https://chopeapi.chope.cc/</code> (inside China excluding HongKong)</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s1">'api_enpoint_here'</span> 
+  -H <span class="s1">'Autorization: Bearer 1234ca567f4e31474ef4a0bf29z4e2b890c11'</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>1234ca567f4e31474ef4a0bf29z4e2b890c11</code> with your API key to access the production data.</p>
+</blockquote>
+
+<p>Chope API uses token-based verification in the header. An access token will be assigned by Chope to partners once commercial term has been signed. </p>
+
+<p>To perform test on Chope Sandbox environment, please <a href="mailto:product-team@chope.co">reach out to us</a> for arrangement. </p>
+<h1 id='market-availability'>Market Availability</h1>
+<p>Chope operates in 8 cities, please use the following <code>region_code</code> while working with each specific market. In all cities we support English as default language and the local language of each city. </p>
 
 <table><thead>
 <tr>
@@ -402,44 +428,35 @@
 <td>zh_CN</td>
 </tr>
 </tbody></table>
-<h1 id='chope-api-endpoint'>Chope API endpoint</h1><h2 id='production'>Production</h2>
-<p><code>https://chopeapi.chope.co/</code> (outside China)</p>
-
-<p><code>https://chopeapi.chope.net.cn/</code> (inside China excluding HongKong)</p>
-<h2 id='sandbox'>Sandbox</h2>
-<p><code>http://chopeapi.chope.info/</code> (outside China)</p>
-
-<p><code>https://chopeapi.chope.cc/</code> (inside China excluding HongKong)</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code: </p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s1">'api_enpoint_here'</span> 
-  -H <span class="s1">'Autorization: Bearer 6987ca1086f4e31474bc4a0bf291d4e2b7926c52'</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>6987ca1086f4e31474bc4a0bf291d4e2b7926c52</code> with your API key to access the production data.</p>
-</blockquote>
-
-<p>Chope API uses token-based verification in the header. An access token will be assigned by Chope to partners once commercial term has been signed. </p>
-
-<p>To perform test on Chope Sandbox environment, please use the following token: </p>
-
-<p><code>Autorization: Bearer 6987ca1086f4e31474bc4a0bf291d4e2b7926c52</code></p>
 <h1 id='important-notes'>Important Notes</h1><h2 id='restaurant-with-special-setup'>Restaurant with Special Setup</h2>
 <p>Most reservation on Chope can be made simply by submitting diner&#39;s particulars, but some restaurants have special configurations that require additional information and process, for example: </p>
 
 <ol>
+<li><p>Restaurant with custom checkboxes to obtain users&#39; consent<br>
+The content may be restaurant&#39;s terms or special notes e.g. dress code etc. </p></li>
 <li><p>Restaurant with Customized Questionnaire (CQ)<br>
 This is question set up by the restaurant to diners, e.g. seating preference (in-door/outdoor) [optional or required] </p></li>
 <li><p>Restaurant with Deposit Requirement<br>
 Some restaurants have up-front deposit payment required to prevent no-show.</p></li>
 </ol>
 
-<p>Please take extra notice when implementing the <code>bookings/create</code> API to cover all scenarios to prevent failed reservation.</p>
+<p>Please take extra notice when implementing the booking flows and calling <code>bookings/create</code> API to cover all scenarios to prevent failed reservation.</p>
 <h2 id='email-communication-with-users'>Email Communication with Users</h2>
-<p>Chope will send out booking confrimation and reminder email to users. If partner wish to perform the communication with users directly, please indicate your intention in the commercial term. Chope team will disable the email feature during partner setup process. </p>
+<p>By default, Chope will send out Chope branded booking confirmation and reminder email to users. We provide 2 options for partners:</p>
+
+<ol>
+<li><p>Co-branded email manage by Chope based on standard template</p></li>
+<li><p>Co-branded white label email manage by partners </p></li>
+</ol>
+
+<p>Please indicate your choice of user communication preference in the commercial term.</p>
+<h3 id='type-of-emails'>Type of Emails</h3>
+<ol>
+<li>Confirmation email upon successful booking</li>
+<li>Reminder email (within 12am-5am on the reservation day)</li>
+<li>Edited reservation </li>
+<li>Cancelled reservation</li>
+</ol>
 <h1 id='flow'>Flow</h1><h2 id='customer-facing-flow'>Customer Facing Flow</h2>
 <p><img src="images/customer_facing_flow.png" alt="customer_facing_flow" /></p>
 
@@ -566,6 +583,9 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <td>Default to <code>en_US</code> if empty.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">Use the correct combination of <code>region_code</code> and <code>language</code> to retrieve contents in local languge. Wrong combination will return contents in en_US by default.
+</aside>
 
 <blockquote>
 <p>Sample Response (formatted)</p>
@@ -764,6 +784,9 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <td>Waitlist availability. <br>0: not available <br>1: available</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">You MUST implement <code>custome_checkboxes</code> with <code>required</code> value equal true - as this is extremely important for restuarant with certain terms and privacy policy that users must consent in order to make an online reservation.
+</aside>
 <h2 id='get-bookings-timeslots'>GET /bookings/timeslots</h2>
 <p>Retrieve availability. The endpoint will returns: </p>
 
@@ -833,6 +856,9 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 </tr>
 </tbody></table>
 
+<aside class="notice">Use the correct combination of <code>region_code</code> and <code>language</code> to retrieve contents in local languge. Wrong combination will return contents in en_US by default.
+</aside>
+
 <blockquote>
 <p>Sample Response (formatted)</p>
 </blockquote>
@@ -847,25 +873,21 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1545953400</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"waitlist"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"capacity_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-6"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1545954300</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"waitlist"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"capacity_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-6"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1545955200</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"waitlist"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"capacity_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-6"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1545956100</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"waitlist"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"capacity_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2-6"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -934,7 +956,7 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <tr>
 <td>&nbsp;&nbsp; time</td>
 <td>timestamp</td>
-<td>Time slot available on specific date for booking in UNIX time</td>
+<td>Time slot available on specific date for booking in UNIX time.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp; wailtlist</td>
@@ -942,9 +964,9 @@ Some restaurants have up-front deposit payment required to prevent no-show.</p><
 <td>Waitlist availability.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp; capacity_limit</td>
-<td>string</td>
-<td>Indicated the capacity for this time slot if available.</td>
+<td>&nbsp;&nbsp; <del>capacity_limit</del></td>
+<td><del>string</del></td>
+<td><del>Indicated the capacity for this time slot if available.</del> <strong>Depreciated</strong></td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp; note</td>
@@ -1068,7 +1090,7 @@ Refer to (3) in the image where the restaurant is asking how many napkins diner 
 <td>title</td>
 <td>string</td>
 <td>no</td>
-<td>Title of the diner. Possible value: Mr., Miss, Ms., Mrs., Dr. Can be null.</td>
+<td>Title of the diner. Possible value: <code>Mr.</code>, <code>Ms.</code>, <code>Mrs.</code>, <code>Mdm.</code>, <code>Dr.</code> Can be null. <strong>If you support mutiple language, please map local laguage to this 5 types of title in English.</strong></td>
 </tr>
 <tr>
 <td>last_name</td>
@@ -1128,7 +1150,7 @@ Refer to (3) in the image where the restaurant is asking how many napkins diner 
 <td>content</td>
 <td>json</td>
 <td>yes</td>
-<td>Questionnaire answer in key-value set. <br>Sample: {&quot;7&quot;:&quot;Indoors&quot;,&quot;8&quot;:&quot;bar seats&quot;}. Required only if Questionnaire is mandatory.</td>
+<td>Questionnaire answer in key-value set {&quot;<code>id1</code>&quot;:&quot;<code>answer1</code>&quot;, &quot;<code>id2</code>&quot;:&quot;<code>answer2</code>&quot;}. <br>Sample: {&quot;7&quot;:&quot;Indoors&quot;, &quot;8&quot;:&quot;bar seats&quot;} <br>Required only if Questionnaire is mandatory.</td>
 </tr>
 <tr>
 <td>callback_url</td>
@@ -1545,6 +1567,10 @@ Refer to (3) in the image where the restaurant is asking how many napkins diner 
 <td>Partner’s unique user ID.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+Although <code>membership_id</code> is in the string type, remember to encode for special character when making the request
+</aside>
 
 <blockquote>
 <p>Sample Response (formatted)</p>
@@ -2156,9 +2182,7 @@ Restaurant information feed file is updated on a daily basis.</p>
 <aside class="notice">Partner can monitor the "lastmod" value in the base file and trigger an update process when the timestamp changes.
 </aside>
 <h3 id='restaurant-information-file'>Restaurant Information File</h3>
-<p>File path: <code>/chope/partners_dining/{country}/{country}_restaurant_information_feed_{offset}_500.json</code></p>
-
-<p>Each feed file holds information for 500 restaurants.</p>
+<p>File path: refer to the full file path in the base file.</p>
 
 <blockquote>
 <p>Sample Feed</p>
@@ -2304,9 +2328,9 @@ Availability feed file is updated every 5 hours.</p>
 <aside class="notice">Partner can monitor the "lastmod" value in the base file and trigger an update process when the timestamp changes.
 </aside>
 <h3 id='availability-file'>Availability File</h3>
-<p>File path: <code>/chope/partners_dining/{country}/{country}_restaurant_table_availability_feed_{offset}_50.json</code></p>
+<p>File path: refer to the full file path in the base file.</p>
 
-<p>Each feed file holds availability of 50 restaurant for the next 30 days. </p>
+<p>The feed file holds availability of restaurant for the next 30 days. </p>
 
 <blockquote>
 <p>Sample Feed</p>
