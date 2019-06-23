@@ -18,7 +18,8 @@ curl
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 restaurant_id | string | yes | Unique Chope restaurant identifier.
-date_time | timestamp | yes | Booking date and time in UNIX time. 
+date_time | timestamp | yes | Booking date and time in UNIX time OR "yyyy-mm-dd hh:mm" format
+timezone | string | *yes | tz database time zones. Required only if "yyyy-mm-dd hh:mm" is used in `date_time` parameter.
 title | string | no | Title of the diner. Possible value: `Mr.`, `Ms.`, `Mrs.`, `Mdm.`, `Dr.` Can be null. **If you support mutiple language, please map local laguage to this 5 types of title in English.**
 last_name | string | yes | Last name of the diner.
 first_name | string | no | First name of the diner. 

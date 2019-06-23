@@ -5,6 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
+  - <a href='https://developer.chope.co/login/logout'>Log Out</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -17,9 +18,9 @@ includes:
  - bookings_load
  - callback
  - restaurant_list
+ - restaurant_nearby
  - restaurant
  - errors
- - sandbox
  - feed_overview
  - information_feed
  - availability_feed
@@ -30,13 +31,9 @@ search: true
 
 # Chope Partner Bookings API 
 
-Version 1: 1st published at January 26th, 2018
+Important Update: 25th June 2019
 
-Update 2: December 6th, 2018
-
-Update 3: December 17th, 2018
-
-Update 4: March 5th, 2018  
+We have upgraded our sandbox environment with mirrored production data. Please make sure to update the domain for any new developement. 
 
 # Overview
 
@@ -52,9 +49,9 @@ The current Chope Booking API is organized around REST and JSON is returned by a
 `https://chopeapi.chope.net.cn/` (inside China excluding HongKong)
 
 ##Sandbox
-`http://chopeapi.chope.info/` (outside China)
+`https://chopeapi.qiubaoman.com/` (outside China)
 
-`https://chopeapi.chope.cc/` (inside China excluding HongKong)
+`https://chopeapi.dingzhuo8.biz/` (inside China excluding HongKong)
 
 # Authentication
 
