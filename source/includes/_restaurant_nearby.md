@@ -1,5 +1,3 @@
-# Restaurant API
-
 ## GET /restaurant/nearby
 
 Retrieve nearby restaurant by location. Use this endpoint to retrieve a list of restaurants available on Chope Network based on user's geolocation. The API returns key information about the restaurants for listing purpose. 
