@@ -1,13 +1,11 @@
-# Restaurant API
+## GET /restaurant/deal
 
-## GET /restaurant/list
-
-Retrieve restaurant list. Use this endpoint to retrieve a list of restaurants available on Chope Network. The API returns key information about the restaurants for listing purpose. 
+Retrieve restaurant list with cash voucher. Use this endpoint to retrieve a list of restaurants available on ChopeDeal Network. The API returns key information about the restaurants for listing purpose. 
 
 > Sample Request
 
 ```shell
-curl 'http://chopeapi.chope.info/restaurant/list?language=en_US&region_code=SG&offset=1&limit=2'  
+curl 'http://chopeapi.chope.info/restaurant/deal?language=en_US&region_code=SG&offset=1&limit=2'  
 -X GET 
 -H 'Authorization: Bearer YOUR-TOKEN-CODE'
 ```
@@ -15,7 +13,7 @@ curl 'http://chopeapi.chope.info/restaurant/list?language=en_US&region_code=SG&o
 ### Query Parameter
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-region_code | string | no | Default to `SG` if empty.
+region_code | string | no | currently only `SG` & `HK` market support ChopeDeal.
 language | string | no | Default to `en_US` if empty.
 offset | integer | no | The offset to fetch results at.
 limit | integer | no | The maximum number of results to return. Default to 100 if empty.
@@ -57,7 +55,7 @@ limit | integer | no | The maximum number of results to return. Default to 100 i
                 "postal_code": null,
                 "profile_link": "https://www.chope.co/singapore-restaurants/cleartest",
                 "booking_url": "https://bookv5.chope.co/booking?rid=cleartest&source=sandbox",
-                "shopify_url": ""
+                "shopify_url": "https://shop.chope.co/products/efgh"
             }
         ]
     }
@@ -82,4 +80,4 @@ restaurants ||
 &nbsp;&nbsp; postal_code | integer | Postal code of the restaurant if available.
 &nbsp;&nbsp; profile_link | string | Restaurant profile link url at Chope domain.
 &nbsp;&nbsp; booking_url | string | Restaurant booking widget hosted at Chope domain.
-&nbsp;&nbsp; shopify_url | string | URL to purchase voucher on ChopeDeal e-commerce site. The value will be empty if the restaurant does not offer any voucher. Please refer to the endpoint "restaurant/deal" to filter restaurant with deal.
+&nbsp;&nbsp; shopify_url | string | URL to purchase voucher on ChopeDeal e-commerce site.

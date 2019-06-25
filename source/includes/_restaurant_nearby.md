@@ -45,7 +45,8 @@ limit | integer | no | The maximum number of results to return. Default to 100 i
                 "region_code": "SG",
                 "postal_code": null,
                 "profile_link": "https://www.chope.co/singapore-restaurants/7adam",
-                "booking_url": "https://bookv5.chope.co/booking?rid=gia1603jkt&source=sandbox"
+                "booking_url": "https://bookv5.chope.co/booking?rid=gia1603jkt&source=sandbox",
+                "shopify_url": "https://shop.chope.co/products/abcd"
             },
             {
                 "restaurant_id": "cleartest",
@@ -57,7 +58,8 @@ limit | integer | no | The maximum number of results to return. Default to 100 i
                 "region_code": "SG",
                 "postal_code": null,
                 "profile_link": "https://www.chope.co/singapore-restaurants/cleartest",
-                "booking_url": "https://bookv5.chope.co/booking?rid=cleartest&source=sandbox"
+                "booking_url": "https://bookv5.chope.co/booking?rid=cleartest&source=sandbox",
+                "shopify_url": ""
             }
         ]
     }

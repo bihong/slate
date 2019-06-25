@@ -18,6 +18,7 @@ includes:
  - bookings_load
  - callback
  - restaurant_list
+ - restaurant_deal
  - restaurant_nearby
  - restaurant
  - errors
