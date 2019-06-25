@@ -304,6 +304,9 @@
                     <a href="#get-restaurant-list" class="toc-h2 toc-link" data-title="GET /restaurant/list">GET /restaurant/list</a>
                   </li>
                   <li>
+                    <a href="#get-restaurant-deal" class="toc-h2 toc-link" data-title="GET /restaurant/deal">GET /restaurant/deal</a>
+                  </li>
+                  <li>
                     <a href="#get-restaurant-nearby" class="toc-h2 toc-link" data-title="GET /restaurant/nearby">GET /restaurant/nearby</a>
                   </li>
                   <li>
@@ -1789,7 +1792,7 @@ Although <code>membership_id</code> is in the string type, remember to encode fo
 </tr>
 </thead><tbody>
 <tr>
-<td>country_code</td>
+<td>region_code</td>
 <td>string</td>
 <td>no</td>
 <td>Default to <code>SG</code> if empty.</td>
@@ -1837,7 +1840,8 @@ Although <code>membership_id</code> is in the string type, remember to encode fo
                 </span><span class="s2">"region_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chope.co/singapore-restaurants/7adam"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=gia1603jkt&amp;source=sandbox"</span><span class="w">
+                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=gia1603jkt&amp;source=sandbox"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shopify_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shop.chope.co/products/abcd"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"restaurant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cleartest"</span><span class="p">,</span><span class="w">
@@ -1849,7 +1853,8 @@ Although <code>membership_id</code> is in the string type, remember to encode fo
                 </span><span class="s2">"region_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chope.co/singapore-restaurants/cleartest"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=cleartest&amp;source=sandbox"</span><span class="w">
+                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=cleartest&amp;source=sandbox"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shopify_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1931,6 +1936,181 @@ Although <code>membership_id</code> is in the string type, remember to encode fo
 <td>&nbsp;&nbsp; booking_url</td>
 <td>string</td>
 <td>Restaurant booking widget hosted at Chope domain.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; shopify_url</td>
+<td>string</td>
+<td>URL to purchase voucher on ChopeDeal e-commerce site. The value will be empty if the restaurant does not offer any voucher. Please refer to the endpoint &quot;restaurant/deal&quot; to filter restaurant with deal.</td>
+</tr>
+</tbody></table>
+<h2 id='get-restaurant-deal'>GET /restaurant/deal</h2>
+<p>Retrieve restaurant list with cash voucher. Use this endpoint to retrieve a list of restaurants available on ChopeDeal Network. The API returns key information about the restaurants for listing purpose. </p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://chopeapi.chope.info/restaurant/deal?language=en_US&amp;region_code=SG&amp;offset=1&amp;limit=2'</span>  
+-X GET 
+-H <span class="s1">'Authorization: Bearer YOUR-TOKEN-CODE'</span>
+</code></pre><h3 id='query-parameter'>Query Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>region_code</td>
+<td>string</td>
+<td>no</td>
+<td>currently only <code>SG</code> &amp; <code>HK</code> market support ChopeDeal.</td>
+</tr>
+<tr>
+<td>language</td>
+<td>string</td>
+<td>no</td>
+<td>Default to <code>en_US</code> if empty.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>integer</td>
+<td>no</td>
+<td>The offset to fetch results at.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>no</td>
+<td>The maximum number of results to return. Default to 100 if empty.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response (formatted)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total_record"</span><span class="p">:</span><span class="w"> </span><span class="mi">166</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"restaurant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gia1603jkt"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"restaurant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Adamssssss"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cuisine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American EN, Chope-Dollars, Buffet, Modern European, Chinese, Japanese, Korean, Indian, Indonesian, Malaysian, Thai, Vietnamese, French, Italian, Spanish, Australian, Cuban, Fusion, International, Mediterranean, Middle Eastern, Moroccan, Seafood, Steakhouse, British, South American, Greek, Vegetarian Friendly, Local, German, Brazilian, Dim Sum, Southeast Asian, BTest"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.270785"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103.824144"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7 Adam Park &lt;br&gt;Singapore (289926)"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"region_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chope.co/singapore-restaurants/7adam"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=gia1603jkt&amp;source=sandbox"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shopify_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shop.chope.co/products/abcd"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"restaurant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cleartest"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"restaurant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A handsome boy named Clear :)"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cuisine"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.285547"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114.152096"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81 Tras Street&lt;br&gt;Singapore (079020)"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"region_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chope.co/singapore-restaurants/cleartest"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=cleartest&amp;source=sandbox"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shopify_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shop.chope.co/products/efgh"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total_record</td>
+<td>integer</td>
+<td>Total record of the list.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>integer</td>
+<td>Selected offset to fetch results at.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>Selected maximum number of results to return.</td>
+</tr>
+<tr>
+<td>restaurants</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; restaurant_id</td>
+<td>string</td>
+<td>Unique Chope restaurant identifier.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; restaurant_name</td>
+<td>string</td>
+<td>Unique Chope Restaurants name (English).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; cuisine</td>
+<td>string</td>
+<td>Type of cuisine served in the restaurant.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; latitude</td>
+<td>string</td>
+<td>Latitude of the restaurant.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; longitude</td>
+<td>string</td>
+<td>Longitude of the restaurant.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; address</td>
+<td>string</td>
+<td>Address of the restaurant with line break for formatting purpose.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; region_code</td>
+<td>string</td>
+<td>Region of the restaurant it operates in.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; postal_code</td>
+<td>integer</td>
+<td>Postal code of the restaurant if available.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; profile_link</td>
+<td>string</td>
+<td>Restaurant profile link url at Chope domain.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; booking_url</td>
+<td>string</td>
+<td>Restaurant booking widget hosted at Chope domain.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp; shopify_url</td>
+<td>string</td>
+<td>URL to purchase voucher on ChopeDeal e-commerce site.</td>
 </tr>
 </tbody></table>
 <h2 id='get-restaurant-nearby'>GET /restaurant/nearby</h2>
@@ -2024,7 +2204,8 @@ Although <code>membership_id</code> is in the string type, remember to encode fo
                 </span><span class="s2">"region_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chope.co/singapore-restaurants/7adam"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=gia1603jkt&amp;source=sandbox"</span><span class="w">
+                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=gia1603jkt&amp;source=sandbox"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shopify_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shop.chope.co/products/abcd"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"restaurant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cleartest"</span><span class="p">,</span><span class="w">
@@ -2036,7 +2217,8 @@ Although <code>membership_id</code> is in the string type, remember to encode fo
                 </span><span class="s2">"region_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SG"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chope.co/singapore-restaurants/cleartest"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=cleartest&amp;source=sandbox"</span><span class="w">
+                </span><span class="s2">"booking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bookv5.chope.co/booking?rid=cleartest&amp;source=sandbox"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"shopify_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
