@@ -5,7 +5,7 @@ Retrieve nearby restaurant by location. Use this endpoint to retrieve a list of 
 > Sample Request
 
 ```shell
-curl 'https://chopeapi.qiubaoman.com/restaurant/nearby?country_code=SG&lng=103.85403&lat=1.29797&distance=200000&orderby=distance&amp;language=en_US&offset=1&limit=10'  
+curl 'https://chopeapi.qiubaoman.com/restaurant/nearby?region_code=SG&lng=103.85403&lat=1.29797&distance=200000&orderby=distance&amp;language=en_US&offset=1&limit=10'  
 -X GET 
 -H 'Authorization: Bearer YOUR-TOKEN-CODE'
 ```

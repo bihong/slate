@@ -5,7 +5,7 @@ Retrieve restaurant list with cash voucher. Use this endpoint to retrieve a list
 > Sample Request
 
 ```shell
-curl 'http://chopeapi.chope.info/restaurant/deal?language=en_US&region_code=SG&offset=1&limit=2'  
+curl 'http://chopeapi.chope.info/restaurant/deal?language=en_US&region_code=SG'  
 -X GET 
 -H 'Authorization: Bearer YOUR-TOKEN-CODE'
 ```
@@ -15,8 +15,6 @@ Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 region_code | string | no | currently only `SG` & `HK` market support ChopeDeal.
 language | string | no | Default to `en_US` if empty.
-offset | integer | no | The offset to fetch results at.
-limit | integer | no | The maximum number of results to return. Default to 100 if empty.
 
 > Sample Response (formatted)
 
@@ -28,8 +26,6 @@ limit | integer | no | The maximum number of results to return. Default to 100 i
     },
     "result": {
         "total_record": 166,
-        "offset": 1,
-        "limit": 2,
         "restaurants": [
             {
                 "restaurant_id": "gia1603jkt",
@@ -67,8 +63,6 @@ limit | integer | no | The maximum number of results to return. Default to 100 i
 Parameter | Type | Description 
 --------- | ---- | -----------
 total_record | integer | Total record of the list.
-offset | integer | Selected offset to fetch results at.
-limit | integer | Selected maximum number of results to return.
 restaurants || 
 &nbsp;&nbsp; restaurant_id | string | Unique Chope restaurant identifier.
 &nbsp;&nbsp; restaurant_name | string | Unique Chope Restaurants name (English).
